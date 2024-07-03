@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>web form</title>
+</head>
+
+<body>
+
+    <div class="class" id="div1" data-first="Apple" data-second="Cherry" data-third="Banana">
+        <button id="button1" type="button">누르세요</button>
+        <!-- <button>버튼2</button> -->
+        <br>
+        <span id="span1">누르면 이름이 나타나요</span>
+    </div>
+
+    <script>
+        var div = document.getElementById("div1");
+        var button = document.getElementById("button1");
+        var span = document.getElementById("span1");
+
+        var pos = 0;
+        var name = "";
+
+        var names = ["first", "second", "third"];
+
+        button.addEventListener("click", function () {
+            name = names[pos++];
+            console.log("name is " + name);
+            span.innerHTML = div.dataset[name];
+            pos %= 3;
+        })
+    </script>
+</body>
+
+</html>

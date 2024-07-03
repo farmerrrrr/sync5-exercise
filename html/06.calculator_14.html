@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>calculator</title>
+</head>
+
+<body>
+    <label for="num1">숫자1</label>
+    <input type="number" id="num1">
+    <br>
+    <label for="op">연산자</label>
+    <input type="text" id="op">
+    <br>
+    <label for="num2">숫자2</label>
+    <input type="number" id="num2">
+    <br>
+    <button onclick="getResult()">계산하기</button>
+    <br>
+    <span id="res">결과: </span>
+
+    <script>
+        function calculator(op, n1, n2) {
+            switch (op) {
+                case "+": return n1 + n2;
+                case "-": return n1 - n2;
+                case "*": return n1 * n2;
+                case "/": return n1 / n2;
+            }
+        }
+
+        function isDivision(op) {
+            return op === "/";
+        }
+
+        function getResult() {
+            var iNum1 = parseFloat(document.getElementById('num1').value),
+                iNum2 = parseFloat(document.getElementById('num2').value);
+            var operator = document.getElementById('op').value;
+
+            if (isDivision(operator)) {
+                if (iNum2 === 0) alert("나누는 수가 0이면 안 됩니다.");
+                return;
+            }
+
+            var result = calculator(operator, iNum1, iNum2);
+
+            var span = document.getElementById("res");
+            span.innerHTML += result;
+        }
+    </script>
+</body>
+
+</html>
