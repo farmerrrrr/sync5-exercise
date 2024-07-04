@@ -1,0 +1,6 @@
+<!-- mvc 패턴의 뷰를 선언(mvc:View) -->
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Text text="Hello World"/>
+</mvc:View>
