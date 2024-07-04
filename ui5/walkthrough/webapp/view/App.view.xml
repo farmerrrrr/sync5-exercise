@@ -1,6 +1,11 @@
 <!-- mvc 패턴의 뷰를 선언(mvc:View) -->
 <mvc:View
+    controllerName="ui5.walkthrough.controller.App"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
-    <Text text="Hello World"/>
+    
+    <!-- controller에서 정의된 onShowHello 호출 -->
+    <Button
+        text="Say Hello"
+        press=".onShowHello"/>
 </mvc:View>
