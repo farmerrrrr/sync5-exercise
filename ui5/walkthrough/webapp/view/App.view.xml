@@ -6,7 +6,7 @@
     
     <!-- controller에서 정의된 onShowHello 호출 -->
     <Button
-        text="Say Hello"
+        text="{i18n>showHelloButtonText}"
         press=".onShowHello"/>
     
     <Input 
