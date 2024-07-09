@@ -1,7 +1,24 @@
 <mvc:View controllerName="sync.d14.fe01.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
+   
     <Page id="page" title="{i18n>title}">
-        <content />
+        <content>
+            <Label
+                id="label"
+                text="입력하세요"
+                required="true"></Label>
+            <Input
+                id="input"
+                value="{/msg}"
+                width="60%"
+            />
+            <Button
+                id="button"
+                text="메세지 출력"
+                press=".onClick"
+            />
+        </content>
     </Page>
+  
 </mvc:View>

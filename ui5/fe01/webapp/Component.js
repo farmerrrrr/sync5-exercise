@@ -5,13 +5,15 @@
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "sync/d14/fe01/model/models"
+        "sync/d14/fe01/model/models",
+        "sap/ui/model/json/JSONModel"
     ],
-    function (UIComponent, Device, models) {
+    function (UIComponent, Device, models, JSONModel) {
         "use strict";
 
         return UIComponent.extend("sync.d14.fe01.Component", {
             metadata: {
+                interfaces: ["sap.ui.core.IAsyncContentCreation"],
                 manifest: "json"
             },
 
@@ -29,6 +31,11 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                const oModel = new JSONModel({
+                    msg: "입력해주세요."
+                });
+                this.setModel(oModel);
             }
         });
     }
