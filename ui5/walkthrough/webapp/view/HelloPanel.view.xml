@@ -8,6 +8,11 @@
         class="sapUiResponsiveMargin"
         width="auto">
         <content>
+            <Button 
+                id="helloDialogButton"
+                text="{i18n>openDialogButtonText}"
+                press=".onOpenDialog"
+                class="sapUiSmallMarginEnd" />
             <!-- controller에서 정의된 onShowHello 호출 -->
             <Button
                 text="{i18n>showHelloButtonText}"
