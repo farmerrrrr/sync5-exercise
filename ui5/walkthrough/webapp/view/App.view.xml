@@ -10,26 +10,8 @@
             <pages>
                 <Page title="{i18n>homePageTitle}">     <!-- i18n 모델에서 해당 데이터 가져오기 -->
                     <content>
-                        <Panel
-                            headerText="{i18n>helloPanelTitle}"
-                            class="sapUiResponsiveMargin"
-                            width="auto">
-                            <content>
-                                <!-- controller에서 정의된 onShowHello 호출 -->
-                                <Button
-                                    text="{i18n>showHelloButtonText}"
-                                    press=".onShowHello"
-                                    class="myCustomButton"/>
-
-                                <Input
-                                    value="{/recipient/name}"
-                                    valueLiveUpdate="true"
-                                    width="60%" />
-                                <FormattedText
-                                    htmlText="Hello {/recipient/name}"
-                                    class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText" />
-                            </content>
-                        </Panel>
+                        <!-- nested view -->
+                        <mvc:XMLView viewName="ui5.walkthrough.view.HelloPanel"/>
                     </content>
                 </Page>
             </pages>
