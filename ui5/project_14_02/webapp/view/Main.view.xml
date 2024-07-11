@@ -1,0 +1,19 @@
+<mvc:View controllerName="sync.d14.project1402.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <l:VerticalLayout
+                id="idVerti"
+                width="300px">
+                <Input id="idInput" />
+                <Button 
+                    id="idButton"
+                    text="작성 완료"
+                    press=".onClick" />
+                <Text id="idText" />
+            </l:VerticalLayout>
+        </content>
+    </Page>
+</mvc:View>
