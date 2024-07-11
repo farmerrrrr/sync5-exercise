@@ -25,6 +25,12 @@
                         additionalText="{gender}"
                     />
                 </Select>
+                <Button
+                    id="idButton2"
+                    text="리스트 정보"
+                    press=".onClick2"
+                />
+                <Text id="idText2" />
             </l:VerticalLayout>
         </content>
     </Page>

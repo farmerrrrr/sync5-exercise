@@ -23,6 +23,13 @@ function (Controller, JSONModel) {
         onClick() {
             var sValue = this.byId("idInput").getValue();
             this.byId("idText").setText(sValue);
+        },
+
+        onClick2() {
+            var oSelect = this.byId("idSelect");
+            var sText2 = oSelect.getSelectedItem().getText();
+            
+            this.byId("idText2").setText(sText2);
         }
     });
 });
