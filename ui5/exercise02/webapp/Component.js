@@ -31,6 +31,7 @@ sap.ui.define([
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
 
+                // 피연산자, 연산자, 결과값을 포함하고 있는 JSON 객체 생성
                 var oModel = new JSONModel({
                     number1: 0,
                     number2: 0,
