@@ -1,0 +1,51 @@
+<mvc:View controllerName="sync.d14.exercise02.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel id="panel">
+                <content>
+                    <Label
+                        id="label"
+                        text="입력하세요"
+                        required="true"
+                        class="sapUiSmallMarginEnd"/>
+                    <Input
+                        id="input1"
+                        value="{/number1}"
+                        width="10%"
+                        class="sapUiSmallMarginEnd"/>
+                    <Button
+                        id="btn_add"
+                        text="+"
+                        press=".onSetOperator_add"
+                        class="sapUiSmallMarginEnd"/>
+                    <Button
+                        id="btn_sub"
+                        text="-"
+                        press=".onSetOperator_sub"
+                        class="sapUiSmallMarginEnd"/>
+                    <Button
+                        id="btn_mul"
+                        text="*"
+                        press=".onSetOperator_mul"
+                        class="sapUiSmallMarginEnd"/>
+                    <Button
+                        id="btn_div"
+                        text="/"
+                        press=".onSetOperator_div"
+                        class="sapUiSmallMarginEnd"/>
+                    <Input
+                        id="input2"
+                        value="{/number2}"
+                        width="10%"
+                        class="sapUiSmallMarginEnd"/>
+                    <Button
+                        id="btn_res"
+                        text="계산"
+                        press=".onOpenResultDialog"/>
+                </content>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>
