@@ -1,6 +1,7 @@
 <mvc:View controllerName="sync.d14.project1402.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
@@ -12,7 +13,18 @@
                     id="idButton"
                     text="작성 완료"
                     press=".onClick" />
-                <Text id="idText" />
+                <Text id="idText" text=""/>
+                <Select
+                    id="idSelect"
+                    width="auto"
+                    items="{list}">
+                    <core:ListItem
+                        id="idListItem"
+                        key="{gender}"
+                        text="{text}"
+                        additionalText="{gender}"
+                    />
+                </Select>
             </l:VerticalLayout>
         </content>
     </Page>
