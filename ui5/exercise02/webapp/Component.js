@@ -35,7 +35,7 @@ sap.ui.define([
                 var oModel = new JSONModel({
                     number1: 0,
                     number2: 0,
-                    operator: "",
+                    // operator: "",
                     result: 0
                 });
                 this.setModel(oModel);
