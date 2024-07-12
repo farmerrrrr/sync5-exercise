@@ -45,7 +45,7 @@ function (Controller, JSONModel) {
 
         // 히스토리 추가
         addHistory(op, n1, n2, res) {
-            var oModel = this.getView().getModel("local")
+            var oModel = this.getView().getModel("local");
             var aHistory = oModel.getProperty("/history");
             aHistory.push({
                 number1: n1,
@@ -53,7 +53,7 @@ function (Controller, JSONModel) {
                 operator: op,
                 result: res
             });
-            oModel.setProperty("/history", aHistory)
+            oModel.setProperty("/history", aHistory);
         },
 
         // 결과값 도출 (데이터 가져오고 -> 0 나눗셈 체크하고 -> 계산 -> 히스토리 추가)
@@ -72,20 +72,25 @@ function (Controller, JSONModel) {
 
             // 계산 로직 수행
             const nResult = this.calculator(sOper, iNum1, iNum2);
-
             // 히스토리 데이터 update
             this.addHistory(sOper, iNum1, iNum2, nResult);
+
+            return nResult
         },
 
         // [이벤트 함수] 계산 결과 Fragment view 띄우기
         async onOpenResultDialog() {
             // JSON 객체 가져와서 결과값 도출 함수 getresult() 호출
-            this.getResult();
+            const nResult = this.getResult();
             
             // 계산 후 Fragment load -> open
             this.oDialog ??= await this.loadFragment({
                 name: "sync.d14.exercise02.view.Result"
             });
+
+            // Fragment에 결과 값 뿌리기
+            this.byId("resultText").setText(nResult);
+
             this.oDialog.open();
         },
 

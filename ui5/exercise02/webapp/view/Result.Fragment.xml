@@ -5,8 +5,9 @@
         id="resultDialog"
         title="연산 결과">
         <content>
-            <Text 
-                text="{/result}"
+            <Text
+                id="resultText"
+                text=""
                 class="sapUiMediumMargin"/>
         </content>
         <beginButton>
