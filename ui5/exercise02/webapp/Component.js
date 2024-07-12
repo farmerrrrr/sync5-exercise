@@ -33,12 +33,14 @@ sap.ui.define([
 
                 // 피연산자, 연산자, 결과값을 포함하고 있는 JSON 객체 생성
                 var oModel = new JSONModel({
-                    number1: 0,
-                    number2: 0,
-                    // operator: "",
-                    result: 0
+                    history: [{
+                        number1: 0,
+                        number2: 0,
+                        operator: "",
+                        result: 0
+                    }]
                 });
-                this.setModel(oModel);
+                this.setModel(oModel, "local");
             }
         });
     }

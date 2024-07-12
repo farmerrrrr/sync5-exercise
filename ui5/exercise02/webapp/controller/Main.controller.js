@@ -17,8 +17,15 @@ function (Controller, JSONModel) {
                 ]
             };
             this.getView().setModel(new JSONModel(oJsonData), "Operator");
-      
-            console.log(this.getView().getModel("Operator"));
+        },
+
+        fnColorFormat(sValue) {
+            if(sValue) {
+                if(sValue > 100)
+                    return "#AAAAAA";
+                else   
+                    return "#333333";
+            }
         },
 
         // 나눗셈 유효성 검증 함수
@@ -36,45 +43,39 @@ function (Controller, JSONModel) {
             }
         },
 
-        // 결과값 도출 (데이터 가져오고 -> 0 나눗셈 체크하고 -> 계산)
+        // 히스토리 추가
+        addHistory(op, n1, n2, res) {
+            var oModel = this.getView().getModel("local")
+            var aHistory = oModel.getProperty("/history");
+            aHistory.push({
+                number1: n1,
+                number2: n2,
+                operator: op,
+                result: res
+            });
+            oModel.setProperty("/history", aHistory)
+        },
+
+        // 결과값 도출 (데이터 가져오고 -> 0 나눗셈 체크하고 -> 계산 -> 히스토리 추가)
         getResult() {
             // input 데이터, selected 데이터(연산자) load
-            var oModel = this.getView().getModel();
-            var iNum1 = Number(oModel.getProperty('/number1')),
-                iNum2 = Number(oModel.getProperty('/number2'));
+            var iNum1 = Number(this.byId("input1").getValue()),
+                iNum2 = Number(this.byId("input2").getValue());
             var sOper = this.byId("select").getSelectedItem().getText();
 
             // 계산 전 0 나눗셈 유효성 체크
             // 0으로 나누려고 시도 시 결과 값은 0으로 할당
             if (this.isInvalid(sOper, iNum2)) {
                 alert("나누는 수가 0이면 안 됩니다.");
-                obj.setProperty('/result', 0);
                 return;
             }
 
             // 계산 로직 수행
-            const result = this.calculator(sOper, iNum1, iNum2);
-            oModel.setProperty('/result', result);
+            const nResult = this.calculator(sOper, iNum1, iNum2);
+
+            // 히스토리 데이터 update
+            this.addHistory(sOper, iNum1, iNum2, nResult);
         },
-
-        // // 내부 연산자 설정 함수
-        // setOperator(op) {
-        //     this.getView().getModel().setProperty('/operator', op);
-        // },
-
-        // // [이벤트 함수] 버튼 설정 이벤트 함수 연산자별 분리
-        // onSetOperator_add() {
-        //     this.setOperator("+");
-        // },
-        // onSetOperator_sub() {
-        //     this.setOperator("-");
-        // },
-        // onSetOperator_mul() {
-        //     this.setOperator("*");
-        // },
-        // onSetOperator_div() {
-        //     this.setOperator("/");
-        // },
 
         // [이벤트 함수] 계산 결과 Fragment view 띄우기
         async onOpenResultDialog() {
