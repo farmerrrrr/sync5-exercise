@@ -18,6 +18,8 @@
                         value=""
                         width="10%"
                         class="sapUiSmallMarginEnd"/>
+
+                    <!-- 연산자를 선택할 수 있는 드롭박스 -->
                     <Select
                         id="select"
                         width="auto"
@@ -30,27 +32,6 @@
                         />
                     </Select>
 
-                    <!-- 버튼 별 이벤트 함수(연산자 설정) 분리 -->
-                    <!-- <Button
-                        id="btn_add"
-                        text="+"
-                        press=".onSetOperator_add"
-                        class="sapUiSmallMarginEnd"/>
-                    <Button
-                        id="btn_sub"
-                        text="-"
-                        press=".onSetOperator_sub"
-                        class="sapUiSmallMarginEnd"/>
-                    <Button
-                        id="btn_mul"
-                        text="*"
-                        press=".onSetOperator_mul"
-                        class="sapUiSmallMarginEnd"/>
-                    <Button
-                        id="btn_div"
-                        text="/"
-                        press=".onSetOperator_div"
-                        class="sapUiSmallMarginEnd"/> -->
                     <Input
                         id="input2"
                         type="Number"
@@ -64,6 +45,7 @@
                         text="계산"
                         press=".onOpenResultDialog"/>
 
+                    <!-- 계산 히스토리 정보를 표현하는 테이블 -->
                     <t:Table
                         id="table"
                         rows="{local>/history}"
@@ -119,6 +101,8 @@
                             <t:Column hAlign="Center">
                                 <Label text="Status"/>
                                 <t:template>
+                                    <!-- 결과 값을 바탕으로 포맷터를 통해 'circle-task-2'의 color 값 지정
+                                         컬러 변경 기준과 visible 기준 동일 (결과 값 100 초과)  -->
                                     <core:Icon
                                         src="sap-icon://circle-task-2"
                                         class="size1"

@@ -19,6 +19,7 @@ function (Controller, JSONModel) {
             this.getView().setModel(new JSONModel(oJsonData), "Operator");
         },
 
+        // 계산 값에 따른 status에 대한 포맷팅 함수
         fnColorFormat(sValue) {
             if(sValue) {
                 if(sValue > 100)
@@ -75,7 +76,7 @@ function (Controller, JSONModel) {
             // 히스토리 데이터 update
             this.addHistory(sOper, iNum1, iNum2, nResult);
 
-            return nResult
+            return nResult;
         },
 
         // [이벤트 함수] 계산 결과 Fragment view 띄우기
