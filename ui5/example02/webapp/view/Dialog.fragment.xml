@@ -1,0 +1,76 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:core="sap.ui.core">
+    <Dialog 
+        id="chartDialog"
+        title="{i18n>dialogTitle}">
+        <content>
+            <viz:VizFrame
+                id="chart"
+                height="500px"
+                vizType="column"
+                vizProperties="{
+                    title: {
+                        text: 'Title of Chart'
+                    },
+                    categoryAxis: {
+                        title: {
+                            visible: true,
+                            text: 'Area'
+                        }
+                    },
+                    valueAxis: {
+                        title: {
+                            visible: true,
+                            text: '매출액'
+                        }
+                    },
+                    yAxis: { 
+                        scale: { 
+                            fixedRange: true, 
+                            minValue: 0, 
+                            maxValue: 60
+                        }
+                    },
+                    plotArea: {
+                        colorPalette: ['#F9AD79', '#D16A7C', '#8873A2', '#3A95B3'],
+                        drawingEffect : 'glossy'
+                    }      
+                }">
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{data>/list}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition 
+                                name="area"
+                                value="{data>area}"/>
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition 
+                                name="매출액"
+                                value="{data>result}"/>
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+                <viz:feeds>
+                    <viz.feeds:FeedItem
+                        uid="valueAxis"
+                        type="Measure"
+                        values="매출액"/>
+                    <viz.feeds:FeedItem
+                        uid="categoryAxis"
+                        type="Dimension"
+                        values="area"/>
+                </viz:feeds>
+            </viz:VizFrame>
+        </content>
+        <beginButton>
+            <Button
+                id="closeButton"
+                text="{i18n>dialogCloseButtonText}"
+                press=".onCloseDialog"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

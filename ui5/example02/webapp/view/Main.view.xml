@@ -1,0 +1,49 @@
+<mvc:View controllerName="sync.d14.example02.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page">
+        <content>
+            <Panel>
+                <t:Table
+                    id="table"
+                    rows="{data>/list}"
+                    selectionMode="MultiToggle">
+                    <t:extension>
+                        <OverflowToolbar>
+                            <Title
+                                text="Result"
+                                level="H2"/>
+                            <ToolbarSpacer />
+                            <Button
+                                id="button"
+                                text="세부정보"
+                                press=".onOpenChart"
+                                type="Emphasized"/>
+                        </OverflowToolbar>
+                    </t:extension>
+                    <t:columns>
+                        <t:Column >
+                            <Label text="Area" />
+                            <t:template>
+                                <Text text="{data>area}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column >
+                            <Label text="Product" />
+                            <t:template>
+                                <Text text="{data>product}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column >
+                            <Label text="Result" />
+                            <t:template>
+                                <Text text="{data>result}" />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>
