@@ -1,0 +1,123 @@
+<mvc:View controllerName="sync.d14.chart01.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns="sap.m">
+    <Page
+        id="page"
+        title="{i18n>title}">
+        <content>
+            <VBox>
+                <!-- 차트 컨테이너 정의(도넛 차트) -->
+                <viz:VizFrame
+                    id="idVizFrame1"
+                    width="60%"
+                    height="600px"
+                    vizType="donut">
+
+            <!-- {
+                "title": {
+                    "text": "라인 차트"
+                },
+                "categoryAxis": {
+                    "title": {
+                        "visible": true,
+                        "text": "월"
+                    }
+                },
+                "valueAxis": {
+                    "title": {
+                        "visible": true,
+                        "text": "값"
+                    }
+                }
+            } -->
+    
+                    <!-- (1) 데이터 셋 정의 -->
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{/data}">
+                            <viz.data:dimensions>
+                                <!-- 1) 차트의 차원 정의 (카테고리) -->
+                                <viz.data:DimensionDefinition 
+                                    name="Category"
+                                    value="{Category}"/>
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <!-- 2) 차트의 측정 값 정의 (값) -->
+                                <viz.data:MeasureDefinition
+                                    name="Value"
+                                    value="{Value}"/>
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+                    <!-- (1) 피드 정의 (차트에 데이터 연결) -->
+                    <viz:feeds>
+                        <!-- 값 축 -->
+                        <viz.feeds:FeedItem
+                            uid="size"
+                            type="Measure"
+                            values="Value"/>
+                        <!-- 카테고리 축 -->
+                        <viz.feeds:FeedItem
+                            uid="color"
+                            type="Dimension"
+                            values="Category"/>
+                    </viz:feeds>
+                </viz:VizFrame>
+            </VBox>
+
+            <VBox>
+                <viz:VizFrame
+                    id="idVizFrame2"
+                    width="60%"
+                    height="600px"
+                    vizType="line"
+                    vizProperties="{
+                        title: {
+                            text: '라인 차트'
+                        },
+                        categoryAxis: {
+                            title: {
+                                visible: true,
+                                text: '월'
+                            }
+                        },
+                        valueAxis: {
+                            title: {
+                                visible: true,
+                                text: '값'
+                            }
+                        }
+                    }">
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{data>/data}">
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition 
+                                    name="Month test"
+                                    value="{Month}"/>
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition
+                                    name="Sales test"
+                                    value="{Sales}"/>
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+                    <viz:feeds>
+                        <viz.feeds:FeedItem
+                            uid="valueAxis"
+                            type="Measure"
+                            values="Sales test"/>
+                        <viz.feeds:FeedItem
+                            uid="categoryAxis"
+                            type="Dimension"
+                            values="Month test"/>
+                    </viz:feeds>
+                </viz:VizFrame>
+            </VBox>
+        </content>
+    </Page>
+
+
+</mvc:View>
